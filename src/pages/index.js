@@ -55,7 +55,7 @@ class BlogIndex extends React.Component {
 		console.log('FNODE: ', fnode)
 		const ftitle = fnode.frontmatter.title || fnode.fields.slug
 
-		let otherPosts = posts.filter(e => e.node.frontmatter.title != 'Hello');
+		let otherPosts = posts.filter(e => e.node.frontmatter.title !== 'Hello');
 
 		return (
 			<Layout location={this.props.location} title={siteTitle}>
@@ -72,7 +72,7 @@ class BlogIndex extends React.Component {
 
 				{
 					otherPosts.map(({ node }) => {
-						return <BlogNode node={node}/>
+						return <BlogNode key={node.frontmatter.title} node={node}/>
 					})
 
 				}
